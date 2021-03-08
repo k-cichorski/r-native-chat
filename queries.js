@@ -24,3 +24,15 @@ export const GET_USER = gql`
     }
   }
 `;
+
+export const GET_ROOM = (id) => gql`
+  query getRoom {
+    room(id: "${id}") {
+      messages {
+        body,
+        insertedAt
+      },
+      name
+    }
+  }
+`
