@@ -1,13 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
-import { styles } from './styles/App';
+import client from './client';
 
-import ChatList from './components/ChatList';
+import { ApolloProvider } from '@apollo/client';
+import Main from './components/Main';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ChatList />
-    </View>
+    <ApolloProvider client={client}>
+      <Main />
+    </ApolloProvider>
   );
 }
