@@ -8,14 +8,15 @@ export const styles = StyleSheet.create({
         width: SCREEN_HEIGHT * 0.1,
         height: SCREEN_HEIGHT * 0.1,
         borderRadius: 180,
-        marginRight: '5%'
+        marginRight: '5%',
+        backgroundColor: '#fff'
     },
     container: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      maxWidth: '95%',
-      marginBottom: '8%'
+      width: '100%',
+      padding: '5%'
     },
     roomInfo: {
       display: 'flex',
@@ -42,5 +43,8 @@ export const styles = StyleSheet.create({
       marginRight: '12%',
       justifyContent: 'center',
       marginBottom: '3%'
+    },
+    touchable: {
+      borderRadius: 20
     }
 });
