@@ -1,5 +1,6 @@
 export const initialState = {
-  rooms: []
+  rooms: [],
+  currentUser: null
 }
 
 export const ROOMS_FETCHED = 'ROOMS_FETCHED';
@@ -9,7 +10,8 @@ export const reducer = (state, action) => {
     case ROOMS_FETCHED:
       return ({
         ...state,
-        rooms: action.payload
+        rooms: action.payload.rooms,
+        currentUser: action.payload.user
       })
 
     default:

@@ -7,6 +7,12 @@ export const GET_ROOMS = gql`
         id,
         name,
         roomPic
+      },
+      user {
+        id,
+        profilePic,
+        firstName,
+        lastName
       }
     }
   }

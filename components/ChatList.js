@@ -22,7 +22,10 @@ export default ChatList = ({navigation}) => {
     if (!loading && data) {
       dispatch({
         type: ROOMS_FETCHED,
-        payload: [...data.usersRooms.rooms].reverse()
+        payload: {
+          rooms: [...data.usersRooms.rooms].reverse(),
+          user: data.usersRooms.user
+        }
       });
     }
   }, [data]);
@@ -35,14 +38,14 @@ export default ChatList = ({navigation}) => {
       locations={[0.25, 1]}
       start={[0, 0]}
       end={[1, 0]} style={styles.container}>
-    <SafeAreaView style={styles.container}>
-      <ChatHeader title='Chatly' />
-      <FlatList data={rooms}
-        renderItem={renderItem}
-        keyExtractor={room => room.id}
-        style={styles.flatList}
-      />
-    </SafeAreaView>
+        <SafeAreaView style={styles.container}>
+          <ChatHeader title='Chatly' />
+          <FlatList data={rooms}
+            renderItem={renderItem}
+            keyExtractor={room => room.id}
+            style={styles.flatList}
+          />
+        </SafeAreaView>
     </LinearGradient>
   )
 }
