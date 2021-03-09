@@ -12,9 +12,9 @@ export const styles = StyleSheet.create({
     },
     title: {
       color: 'white',
-      paddingBottom: '5%',
-      paddingLeft: '5%',
-      fontSize: 40,
+      padding: '5%',
+      paddingTop: '10%',
+      fontSize: 30,
       fontWeight: 'bold',
       fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace'
     }

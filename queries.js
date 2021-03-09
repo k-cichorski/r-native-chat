@@ -30,9 +30,30 @@ export const GET_ROOM = (id) => gql`
     room(id: "${id}") {
       messages {
         body,
-        insertedAt
+        insertedAt,
+        id,
+        user {
+          firstName,
+          lastName,
+          profilePic
+        }
       },
       name
     }
   }
-`
+`;
+
+export const MESSAGE_SUBSCRIPTION = (id) => gql`
+  subscription onMessageAdded {
+    messageAdded(roomId: "${id}") {
+      id,
+      body,
+      isertedAt,
+      user {
+        profilePic,
+        firstName,
+        lastName
+      }
+    }
+  }
+`;

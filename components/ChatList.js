@@ -10,12 +10,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import ChatRoom from './ChatRoom';
 import ChatHeader from './ChatHeader';
 
-export default ChatList = () => {
+export default ChatList = ({navigation}) => {
   const { loading, data } = useQuery(GET_ROOMS);
   const [{rooms}, dispatch] = useStateValue();
 
   const renderItem = ({item}) => (
-    <ChatRoom id={item.id} imageUri={item.roomPic} />
+    <ChatRoom id={item.id} imageUri={item.roomPic} navigation={navigation} />
   );
 
   useEffect(() => {
@@ -30,7 +30,6 @@ export default ChatList = () => {
   if (loading) return <ActivityIndicator animating={true} size="large" color="#999999" />
 
   return (
-    
     <LinearGradient
       colors={['#6c0299', '#ffa600']}
       locations={[0.25, 1]}

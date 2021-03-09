@@ -5,7 +5,9 @@ import { styles } from '../styles/ChatHeader';
 export default ChatHeader = ({title}) => {
   return (
       <View style={styles.container}>
-          <Text style={styles.title}>{title && title}</Text>
+          <Text style={styles.title} numberOfLines={3}>
+            {title && title}
+          </Text>
       </View>
   );
 }
