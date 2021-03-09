@@ -9,8 +9,7 @@ export const reducer = (state, action) => {
     case ROOMS_FETCHED:
       return ({
         ...state,
-        rooms: action.payload,
-        loading: false
+        rooms: action.payload
       })
 
     default:

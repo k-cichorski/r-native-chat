@@ -1,20 +1,21 @@
 import React from 'react';
-import { styles } from '../styles/Main'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { LinearGradient } from 'expo-linear-gradient';
-
+import Chat from './Chat';
 import ChatList from './ChatList';
-import ChatHeader from './ChatHeader';
+
+const Stack = createStackNavigator();
 
 export default Main = () => {
   return (
-    <LinearGradient
-      colors={['#6c0299', '#ffa600']}
-      locations={[0.25, 1]}
-      start={[0, 0]}
-      end={[1, 0]} style={styles.container}>
-        <ChatHeader title='Chatly' />
-        <ChatList />
-    </LinearGradient>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+        headerShown: false
+      }}>
+        <Stack.Screen name='Home' component={ChatList} />
+        <Stack.Screen name='Chat' component={Chat} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
