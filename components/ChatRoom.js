@@ -9,7 +9,7 @@ export default ChatRoom = ({id, imageUri}) => {
   const [room, setRoom] = useState(null);
   let lastMessage = room?.messages.slice(-1)[0];
 
-  getScreeHeight = () => Dimensions.get('window').height;
+  const getScreeHeight = () => Dimensions.get('window').height;
 
   useEffect(() => {
     if (data) {
