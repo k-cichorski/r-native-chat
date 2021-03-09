@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     },
     title: {
       color: 'white',
-      paddingBottom: '10%',
+      paddingBottom: '5%',
       paddingLeft: '5%',
       fontSize: 40,
       fontWeight: 'bold',
