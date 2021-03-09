@@ -4,13 +4,16 @@ export const styles = StyleSheet.create({
     container: {
       backgroundColor: 'transparent',
       justifyContent: 'flex-end',
-      height: '25%',
-      width: '100%'
+      height: '20%',
+      width: '100%',
+      position: 'absolute',
+      top: 0,
+      zIndex: 2
     },
     title: {
       color: 'white',
-      padding: '5%',
-      paddingBottom: '20%',
+      paddingBottom: '10%',
+      paddingLeft: '5%',
       fontSize: 40,
       fontWeight: 'bold',
       fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace'
