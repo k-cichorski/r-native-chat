@@ -18,6 +18,7 @@ export default Chat = ({route}) => {
   const { loading: loadingRoom, data: roomData, errorRoom } = useQuery(GET_ROOM(id));
   const [sendMessage, { data, error }] = useMutation(SEND_MESSAGE);
   const { loading: loadingSub, data: subData, errorSub } = useSubscription(MESSAGE_SUBSCRIPTION(id));
+  let flatList;
 
   const renderItem = ({item}) => (
     <Message body={item.body} user={item.user}
@@ -56,7 +57,9 @@ export default Chat = ({route}) => {
         >
          { !showingKeyboard && <ChatHeader title={room && room.name} />}
           
-          <FlatList data={room && [...room.messages].sort((a, b) => a.insertedAt > b.insertedAt)}
+          <FlatList
+            ref={el => flatList = el}
+            data={room && [...room.messages].sort((a, b) => a.insertedAt > b.insertedAt)}
             renderItem={renderItem}
             keyExtractor={message => message.id}
             style={{
@@ -64,6 +67,9 @@ export default Chat = ({route}) => {
               marginTop: showingKeyboard ? null : styles.flatList.marginTop,
               paddingTop: showingKeyboard ? '10%' : null
             }}
+            onContentSizeChange={() => flatList?.scrollToEnd()}
+            onLayout={() => flatList?.scrollToEnd()}
+            ListFooterComponent={<View style={{paddingBottom: '10%'}} />}
           />
 
           <View style={styles.inputContainer}>

@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
     width: '100%',
-    flex: 1,
+    flex: 1
   },
   flatList: {
     borderTopLeftRadius: 35,
