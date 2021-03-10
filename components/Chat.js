@@ -35,6 +35,7 @@ export default Chat = ({route}) => {
         roomId: id
       }
     });
+    onChangeText('');
   };
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export default Chat = ({route}) => {
         >
          { !showingKeyboard && <ChatHeader title={room && room.name} />}
           
-          <FlatList data={room && room.messages}
+          <FlatList data={room && [...room.messages].sort((a, b) => a.insertedAt > b.insertedAt)}
             renderItem={renderItem}
             keyExtractor={message => message.id}
             style={{
