@@ -17,6 +17,8 @@ export const styles = StyleSheet.create({
       paddingBottom: Platform.OS === 'ios' ? '5%' : '10%',
       fontSize: 30,
       fontWeight: 'bold',
-      fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace'
+      fontFamily: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
+      position: 'absolute',
+      top: Platform.OS === 'ios' ? '15%' : '5%'
     }
 });

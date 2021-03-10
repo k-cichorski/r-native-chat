@@ -24,7 +24,8 @@ export const interlocutorStyles = StyleSheet.create({
       textAlign: 'center'
     },
     image: {
-      alignSelf: 'flex-end'
+      alignSelf: 'flex-end',
+      borderRadius: 180
     }
 });
 
