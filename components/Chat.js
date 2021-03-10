@@ -15,10 +15,21 @@ export default Chat = ({route}) => {
   const [showingKeyboard, changeShowingKeyboard] = useState(false);
   const [{currentUser}, dispatch] = useStateValue();
   const {id} = route.params;
-  const { loading: loadingRoom, data: roomData, errorRoom } = useQuery(GET_ROOM(id));
-  const [sendMessage, { data, error }] = useMutation(SEND_MESSAGE);
-  const { loading: loadingSub, data: subData, errorSub } = useSubscription(MESSAGE_SUBSCRIPTION(id));
+  const { loading: loadingRoom, data: roomData, errorRoom, refetch } = useQuery(GET_ROOM(id));
+  const [sendMessage, { mutData, error }] = useMutation(SEND_MESSAGE);
+  const [skip, setSkip] = useState(true);
+  const { loading: loadingSub, data: subData , error: errorSub } = useSubscription(
+    MESSAGE_SUBSCRIPTION,
+    {
+      skip,
+      variables: {roomId: id}
+    });
   let flatList;
+  let textInput;
+
+  if (subData?.messageAdded) {
+    refetch();
+  }
 
   const renderItem = ({item}) => (
     <Message body={item.body} user={item.user}
@@ -37,9 +48,11 @@ export default Chat = ({route}) => {
       }
     });
     onChangeText('');
+    textInput.clear();
   };
 
   useEffect(() => {
+    setSkip(false);
     if (!loadingRoom && roomData) {
       setRoom(roomData.room);
     }
@@ -74,6 +87,7 @@ export default Chat = ({route}) => {
 
           <View style={styles.inputContainer}>
             <TextInput
+              ref={el => textInput = el}
               onChangeText={text => onChangeText(text)}
               onFocus={keyboardStateHandler}
               onEndEditing={keyboardStateHandler}

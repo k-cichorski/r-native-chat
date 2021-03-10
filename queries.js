@@ -50,12 +50,12 @@ export const GET_ROOM = (id) => gql`
   }
 `;
 
-export const MESSAGE_SUBSCRIPTION = (id) => gql`
-  subscription onMessageAdded {
-    messageAdded(roomId: "${id}") {
+export const MESSAGE_SUBSCRIPTION = gql`
+  subscription onMessageAdded($roomId: String!) {
+    messageAdded(roomId: $roomId) {
       id,
       body,
-      isertedAt,
+      insertedAt,
       user {
         profilePic,
         firstName,

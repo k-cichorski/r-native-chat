@@ -7,7 +7,7 @@ import { styles } from '../styles/ChatRoom';
 export default ChatRoom = ({id, imageUri, navigation}) => {
   const { data } = useQuery(GET_ROOM(id));
   const [room, setRoom] = useState(null);
-  let lastMessage = room?.messages.slice(-1)[0];
+  let lastMessage =room && [...room.messages].sort((a, b) => a.insertedAt > b.insertedAt).slice(-1)[0];
 
   const getScreeHeight = () => Dimensions.get('window').height;
 
